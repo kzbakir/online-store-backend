@@ -1,0 +1,40 @@
+package kz.gexabyte.jwtappdemo.dto;
+
+import kz.gexabyte.jwtappdemo.model.User;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class RegisteredUserDto {
+    private String username;
+    private String password;
+    private String firstName;
+    private String lastName;
+    private String email;
+
+
+    public User toUser() {
+        User user = new User();
+        user.setUsername(username);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setPassword(password);
+        return user;
+    }
+
+    public static RegisteredUserDto fromUser(User user) {
+        RegisteredUserDto registeredUserDto = new RegisteredUserDto();
+        registeredUserDto.setUsername(user.getUsername());
+        registeredUserDto.setFirstName(user.getFirstName());
+        registeredUserDto.setLastName(user.getLastName());
+        registeredUserDto.setEmail(user.getEmail());
+        registeredUserDto.setPassword(user.getPassword());
+
+        return registeredUserDto;
+    }
+}
