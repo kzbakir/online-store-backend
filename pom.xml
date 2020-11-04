@@ -8,10 +8,10 @@
         <version>2.1.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>net.proselyte</groupId>
-    <artifactId>jwtappdemo</artifactId>
+    <groupId>kz.kstu</groupId>
+    <artifactId>onlinestore</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>JwtAppDemo</name>
+    <name>Online-Store</name>
     <description>JWT based spring security REST API</description>
 
     <properties>
@@ -40,15 +40,12 @@
             <artifactId>liquibase-core</artifactId>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.2.14</version>
         </dependency>
-
-
 
         <!-- JSON Web Token lib -->
         <dependency>
