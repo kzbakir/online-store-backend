@@ -34,6 +34,9 @@
                 <constraints nullable="false"/>
             </column>
 
+            <column name="address_id" type="BIGINT">
+            </column>
+
             <column name="created" type="TIMESTAMP" defaultValue="now()">
                 <constraints nullable="false"/>
             </column>
@@ -111,5 +114,15 @@
         <insert tableName="roles">
             <column name="name" value="ROLE_ADMIN"/>
         </insert>
+    </changeSet>
+
+    <changeSet id="1.0.6" author="aidyn aubakirov">
+        <addForeignKeyConstraint baseColumnNames="address_id"
+                                 baseTableName="users"
+                                 constraintName="fk_address_users_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="address"/>
     </changeSet>
 </databaseChangeLog>

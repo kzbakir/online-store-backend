@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "storage_item")
 @Data
-public class StorageItem extends BaseEntity{
+public class StorageItem extends BaseEntity {
 
     @Column(name = "storage_id")
     private Long storageId;
@@ -19,5 +19,4 @@ public class StorageItem extends BaseEntity{
 
     @Column(name = "amount")
     private Integer amount;
-
 }
