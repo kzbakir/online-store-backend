@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "order")
 @Data
-public class Order extends BaseEntity{
+public class Order extends BaseEntity {
 
     @Column(name = "user_id")
     private Long userId;

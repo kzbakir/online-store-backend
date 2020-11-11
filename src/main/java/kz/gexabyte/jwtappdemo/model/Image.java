@@ -10,7 +10,7 @@ import java.sql.Blob;
 @Entity
 @Table(name = "image")
 @Data
-public class Image extends BaseEntity{
+public class Image extends BaseEntity {
 
     @Column(name = "product_id")
     private Long productId;

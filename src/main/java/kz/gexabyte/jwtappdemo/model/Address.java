@@ -2,17 +2,12 @@ package kz.gexabyte.jwtappdemo.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "address")
 @Data
-public class Address extends BaseEntity{
-
-    @Column(name = "user_id")
-    private Long userId;
+public class Address extends BaseEntity {
 
     @Column(name = "city")
     private String city;
@@ -26,4 +21,6 @@ public class Address extends BaseEntity{
     @Column(name = "apartment_number")
     private Integer apartmentNumber;
 
+    @OneToOne(mappedBy = "address")
+    private User user;
 }
