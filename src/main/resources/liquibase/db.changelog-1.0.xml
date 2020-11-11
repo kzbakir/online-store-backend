@@ -26,6 +26,10 @@
                 <constraints nullable="false"/>
             </column>
 
+            <column name="phone_number" type="VARCHAR(12)">
+                <constraints  nullable="false"/>
+            </column>
+
             <column name="password" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
