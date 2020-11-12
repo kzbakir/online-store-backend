@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {HardcodedAuthenticationService} from '../service/hardcoded-authentication.service';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.css']
 })
 export class MainPageComponent implements OnInit {
+  isUserLoggedIn: boolean = false;
 
-  constructor() { }
+  constructor(private hardcodedAuthenticationService
+    : HardcodedAuthenticationService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.isUserLoggedIn = this.hardcodedAuthenticationService.isUserLoggedIn();
   }
 
 }

@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { BasicAuthenticationService } from './basic-authentication.service';
+import {BasicAuthenticationService} from './basic-authentication.service';
 
 describe('BasicAuthenticationService', () => {
   let service: BasicAuthenticationService;
