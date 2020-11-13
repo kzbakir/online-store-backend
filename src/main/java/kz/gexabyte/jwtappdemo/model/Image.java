@@ -2,18 +2,16 @@ package kz.gexabyte.jwtappdemo.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.sql.Blob;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "image")
 @Data
 public class Image extends BaseEntity {
 
-    @Column(name = "product_id")
-    private Long productId;
+    @OneToMany(mappedBy = "image")
+    private List<Product> products;
 
     @Column(name = "name")
     private String imageName;

@@ -37,4 +37,10 @@ public class User extends BaseEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
+
+    @OneToOne(mappedBy = "user")
+    private Review review;
+
+    @OneToOne(mappedBy = "user")
+    private Order order;
 }

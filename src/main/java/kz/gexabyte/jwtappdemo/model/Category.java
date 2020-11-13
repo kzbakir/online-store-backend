@@ -2,9 +2,8 @@ package kz.gexabyte.jwtappdemo.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "category")
@@ -12,8 +11,11 @@ import javax.persistence.Table;
 public class Category extends BaseEntity {
 
     @Column(name = "name_ru")
-    private String categoryNameRu;
+    private String nameRu;
 
     @Column(name = "name_eng")
-    private String categoryNameEng;
+    private String nameEng;
+
+    @OneToMany(mappedBy = "category")
+    private List<UnderCategory> underCategories;
 }
