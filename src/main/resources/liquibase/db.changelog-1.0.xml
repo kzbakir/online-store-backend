@@ -14,15 +14,15 @@
                 <constraints nullable="false" unique="true"/>
             </column>
 
-            <column name="email" type="VARCHAR(255)">
-                <constraints nullable="false" unique="true"/>
-            </column>
-
-            <column name="first_name" type="VARCHAR(100)">
+            <column name="password" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="last_name" type="VARCHAR(100)">
+            <column name="first_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="last_name" type="VARCHAR(50)">
                 <constraints nullable="false"/>
             </column>
 
@@ -30,8 +30,8 @@
                 <constraints  nullable="false"/>
             </column>
 
-            <column name="password" type="VARCHAR(255)">
-                <constraints nullable="false"/>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
             </column>
 
             <column name="address_id" type="BIGINT">
@@ -86,6 +86,388 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="1.0.7" author= "Yergazy Zhekey">
+        <createTable tableName="product">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name_ru" type="VARCHAR(150)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="name_eng" type="VARCHAR(150)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="description_ru" type="VARCHAR(900)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="description_eng" type="VARCHAR(900)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="price" type="DECIMAL">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="brand" type="VARCHAR(50)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="weight" type="DOUBLE">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+            <column name="height" type="DOUBLE">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+            <column name="width" type="DOUBLE">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+            <column name="brand_country_id" type="BIGINT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="manufacturer_country_id" type="BIGINT">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+            <column name="series_ru" type="VARCHAR(150)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+            <column name="series_eng" type="VARCHAR(150)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+            <column name="color_ru" type="VARCHAR(150)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+            <column name="color_eng" type="VARCHAR(150)">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+            <column name="shelf_life" type="INT">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+            <column name="guarantee" type="INT">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.8" author= "Yergazy Zhekey">
+        <createTable tableName="product_country">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name_ru" type="VARCHAR(50)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="name_eng" type="VARCHAR(50)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.11" author= "Yergazy Zhekey">
+        <createTable tableName="review">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="raiting" type="INT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="text" type="VARCHAR(900)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.12" author="Yergazy Zhekey">
+        <createTable tableName="product_review">
+            <column name="review_id" type="BIGINT">
+            </column>
+
+            <column name="product_id" type="BIGINT">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.16" author= "Yergazy Zhekey">
+        <createTable tableName="order">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="quantity" type="INT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="total_price" type="DECIMAL">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.17" author="Yergazy Zhekey">
+        <createTable tableName="product_order">
+            <column name="order_id" type="BIGINT">
+            </column>
+
+            <column name="product_id" type="BIGINT">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.20" author= "Yergazy Zhekey">
+        <createTable tableName="image">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="path" type="BLOB">
+                <constraints nullable="true" unique="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.21" author="Yergazy Zhekey">
+        <createTable tableName="product_image">
+            <column name="image_id" type="BIGINT">
+            </column>
+
+            <column name="product_id" type="BIGINT">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.24" author= "Yergazy Zhekey">
+        <createTable tableName="category">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name_ru" type="VARCHAR(50)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="name_eng" type="VARCHAR(50)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.25" author= "Yergazy Zhekey">
+        <createTable tableName="under_category">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name_ru" type="VARCHAR(50)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="name_eng" type="VARCHAR(50)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="category_id" type="BIGINT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.27" author= "Yergazy Zhekey">
+        <createTable tableName="product_category">
+            <column name="product_id" type="BIGINT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="under_category_id" type="BIGINT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.30" author= "Yergazy Zhekey">
+        <createTable tableName="address">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="city" type="VARCHAR(50)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="street" type="VARCHAR(50)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="house_number" type="VARCHAR(10)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="apartment_number" type="INT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="1.0.31" author= "Yergazy Zhekey">
+        <createTable tableName="country">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name_ru" type="VARCHAR(50)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="name_eng" type="VARCHAR(50)">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
+            <column name="created" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="updated" type="TIMESTAMP" defaultValue="now()">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(25)" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
     <changeSet id="1.0.3" author="aidyn aubakirov">
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="user_roles"
@@ -124,5 +506,125 @@
                                  onUpdate="RESTRICT"
                                  referencedColumnNames="id"
                                  referencedTableName="address"/>
+    </changeSet>
+
+    <changeSet id="1.0.9" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="brand_country_id"
+                                 baseTableName="product"
+                                 constraintName="fk_product_brand_country"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"/>
+    </changeSet>
+
+    <changeSet id="1.0.10" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="manufacturer_country_id"
+                                 baseTableName="product"
+                                 constraintName="fk_product_manufacturer_country_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"/>
+    </changeSet>
+
+    <changeSet id="1.0.13" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="review_id"
+                                 baseTableName="product_review"
+                                 constraintName="fk_product_review_review_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="review"/>
+    </changeSet>
+
+    <changeSet id="1.0.14" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="product_review"
+                                 constraintName="fk_product_review_product_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+    </changeSet>
+
+    <changeSet id="1.0.15" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="review"
+                                 constraintName="fk_review_user_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+
+    <changeSet id="1.0.18" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="order_id"
+                                 baseTableName="product_order"
+                                 constraintName="fk_product_order_order_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="order"/>
+    </changeSet>
+
+    <changeSet id="1.0.19" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="product_order"
+                                 constraintName="fk_product_order_product_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+    </changeSet>
+
+    <changeSet id="1.0.22" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="image_id"
+                                 baseTableName="product_image"
+                                 constraintName="fk_product_image_image_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="image"/>
+    </changeSet>
+
+    <changeSet id="1.0.23" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="product_image"
+                                 constraintName="fk_product_image_product_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+    </changeSet>
+
+    <changeSet id="1.0.26" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="under_category"
+                                 constraintName="fk_under_category_category_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="category"/>
+    </changeSet>
+
+    <changeSet id="1.0.28" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="product_category"
+                                 constraintName="fk_product_category_product_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+    </changeSet>
+
+    <changeSet id="1.0.29" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="under_category_id"
+                                 baseTableName="product_category"
+                                 constraintName="fk_product_category_under_category_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="under_category"/>
     </changeSet>
 </databaseChangeLog>

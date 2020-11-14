@@ -2,18 +2,18 @@ package kz.gexabyte.jwtappdemo.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "order")
 @Data
 public class Order extends BaseEntity {
 
-    @Column(name = "user_id")
-    private Long userId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
     @Column(name = "product_id")
     private Long productId;
@@ -23,4 +23,7 @@ public class Order extends BaseEntity {
 
     @Column(name = "total_price")
     private BigDecimal totalPrice;
+
+    @OneToMany(mappedBy = "order")
+    private List<Product> products;
 }

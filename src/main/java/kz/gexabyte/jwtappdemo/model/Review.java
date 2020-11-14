@@ -2,17 +2,17 @@ package kz.gexabyte.jwtappdemo.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "review")
 @Data
 public class Review extends BaseEntity {
 
-    @Column(name = "user_id")
-    private Long userId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
     @Column(name = "product_id")
     private Long productId;
@@ -23,4 +23,6 @@ public class Review extends BaseEntity {
     @Column(name = "text")
     private String reviewText;
 
+    @OneToMany(mappedBy = "review")
+    private List<Product> products;
 }
