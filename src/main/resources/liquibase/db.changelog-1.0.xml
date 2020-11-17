@@ -249,7 +249,7 @@
     </changeSet>
 
     <changeSet id="1.0.16" author= "Yergazy Zhekey">
-        <createTable tableName="order">
+        <createTable tableName="orders">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -565,7 +565,7 @@
                                  onDelete="CASCADE"
                                  onUpdate="RESTRICT"
                                  referencedColumnNames="id"
-                                 referencedTableName="order"/>
+                                 referencedTableName="orders"/>
     </changeSet>
 
     <changeSet id="1.0.19" author="Yergazy Zhekey">
