@@ -15,6 +15,7 @@ public class RegisteredUserDto {
     private String firstName;
     private String lastName;
     private String email;
+    private String phoneNumber;
 
 
     public User toUser() {
@@ -24,6 +25,7 @@ public class RegisteredUserDto {
         user.setLastName(lastName);
         user.setEmail(email);
         user.setPassword(password);
+        user.setPhoneNumber(phoneNumber);
         return user;
     }
 
@@ -34,6 +36,7 @@ public class RegisteredUserDto {
         registeredUserDto.setLastName(user.getLastName());
         registeredUserDto.setEmail(user.getEmail());
         registeredUserDto.setPassword(user.getPassword());
+        registeredUserDto.setPhoneNumber(user.getPhoneNumber());
 
         return registeredUserDto;
     }

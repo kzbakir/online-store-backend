@@ -9,6 +9,7 @@ import kz.gexabyte.jwtappdemo.security.jwt.JwtTokenProvider;
 import kz.gexabyte.jwtappdemo.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -63,20 +64,16 @@ public class AuthenticationRestControllerV1 {
         }
     }
 
-    @GetMapping("login")
-    public String login() {
-        return "login";
-    }
-
-
     @PostMapping("register")
     public ResponseEntity register(@RequestBody RegisteredUserDto registeredUserDto) {
         try {
-            userService.register(registeredUserDto.toUser());
-            log.info("Проверка нашего метода register!");
-            Map<Object, Object> response = new HashMap<>();
-            response.put("user", registeredUserDto.getUsername() + " registered!");
-            return ResponseEntity.ok(response);
+            User user = userService.findByUsername(registeredUserDto.getUsername());
+            if (user == null) {
+                userService.register(registeredUserDto.toUser());
+                return new ResponseEntity<>("Successful result", HttpStatus.OK);
+            } else {
+                return  new ResponseEntity<>("user with the same username already exists",HttpStatus.BAD_REQUEST);
+            }
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
