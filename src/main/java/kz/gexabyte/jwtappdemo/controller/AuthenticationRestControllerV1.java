@@ -70,9 +70,11 @@ public class AuthenticationRestControllerV1 {
             User user = userService.findByUsername(registeredUserDto.getUsername());
             if (user == null) {
                 userService.register(registeredUserDto.toUser());
-                return new ResponseEntity<>("Successful result", HttpStatus.OK);
+                Map<Object, Object> response = new HashMap<>();
+                response.put("status",HttpStatus.OK);
+                return ResponseEntity.ok(response);
             } else {
-                return  new ResponseEntity<>("user with the same username already exists",HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("Username or email already exist", HttpStatus.BAD_REQUEST);
             }
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
