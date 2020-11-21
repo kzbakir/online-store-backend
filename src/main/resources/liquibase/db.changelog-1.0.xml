@@ -112,8 +112,8 @@
                 <constraints nullable="false" unique="false"/>
             </column>
 
-            <column name="brand" type="VARCHAR(50)">
-                <constraints nullable="false" unique="false"/>
+            <column name="brand_id" type="BIGINT">
+                <constraints nullable="false"/>
             </column>
 
             <column name="weight" type="DOUBLE">
@@ -126,10 +126,6 @@
 
             <column name="width" type="DOUBLE">
                 <constraints nullable="true" unique="false"/>
-            </column>
-
-            <column name="brand_country_id" type="BIGINT">
-                <constraints nullable="false" unique="false"/>
             </column>
 
             <column name="manufacturer_country_id" type="BIGINT">
@@ -179,7 +175,7 @@
     </changeSet>
 
     <changeSet id="1.0.8" author= "Yergazy Zhekey">
-        <createTable tableName="product_country">
+        <createTable tableName="country">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -444,18 +440,18 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="1.0.31" author= "Yergazy Zhekey">
-        <createTable tableName="country">
+    <changeSet id="1.0.32" author= "Yergazy Zhekey">
+        <createTable tableName="brand">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
 
-            <column name="name_ru" type="VARCHAR(50)">
-                <constraints nullable="false" unique="false"/>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true"/>
             </column>
 
-            <column name="name_eng" type="VARCHAR(50)">
-                <constraints nullable="false" unique="false"/>
+            <column name="country_id" type="BIGINT">
+                <constraints nullable="false"/>
             </column>
 
             <column name="created" type="TIMESTAMP" defaultValue="now()">
@@ -510,16 +506,6 @@
                                  onUpdate="RESTRICT"
                                  referencedColumnNames="id"
                                  referencedTableName="address"/>
-    </changeSet>
-
-    <changeSet id="1.0.9" author="Yergazy Zhekey">
-        <addForeignKeyConstraint baseColumnNames="brand_country_id"
-                                 baseTableName="product"
-                                 constraintName="fk_product_brand_country"
-                                 onDelete="CASCADE"
-                                 onUpdate="RESTRICT"
-                                 referencedColumnNames="id"
-                                 referencedTableName="country"/>
     </changeSet>
 
     <changeSet id="1.0.10" author="Yergazy Zhekey">
@@ -630,5 +616,25 @@
                                  onUpdate="RESTRICT"
                                  referencedColumnNames="id"
                                  referencedTableName="under_category"/>
+    </changeSet>
+
+    <changeSet id="1.0.33" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="country_id"
+                                 baseTableName="brand"
+                                 constraintName="fk_brand_country_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"/>
+    </changeSet>
+
+    <changeSet id="1.0.34" author="Yergazy Zhekey">
+        <addForeignKeyConstraint baseColumnNames="brand_id"
+                                 baseTableName="product"
+                                 constraintName="fk_product_brand_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="brand"/>
     </changeSet>
 </databaseChangeLog>

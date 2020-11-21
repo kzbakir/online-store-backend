@@ -26,9 +26,6 @@ public class Product extends BaseEntity {
     @Column(name = "price")
     private BigDecimal price;
 
-    @Column(name = "brand")
-    private String brand;
-
     @Column(name = "weight")
     private String weight;
 
@@ -39,8 +36,8 @@ public class Product extends BaseEntity {
     private String width;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "brand_country_id", referencedColumnName = "id")
-    private Country brandCountry;
+    @JoinColumn(name = "brand_id", referencedColumnName = "id")
+    private Brand brand;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "manufacturer_country_id", referencedColumnName = "id")

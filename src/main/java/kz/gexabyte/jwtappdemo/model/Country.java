@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "product_country")
+@Table(name = "country")
 @Data
 public class Country extends BaseEntity {
 
@@ -16,7 +16,7 @@ public class Country extends BaseEntity {
     private String nameEng;
 
     @OneToOne(mappedBy = "brandCountry")
-    private Product productBrand;
+    private Brand brand;
 
     @OneToOne(mappedBy = "manufacturerCountry")
     private Product productManufacturer;
