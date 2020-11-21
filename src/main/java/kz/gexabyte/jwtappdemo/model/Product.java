@@ -67,23 +67,17 @@ public class Product extends BaseEntity {
     @Column(name = "amount")
     private Integer amount;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinTable(name = "product_review",
-            joinColumns = {@JoinColumn(name = "review_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")})
-    private Review review;
+    @OneToMany(mappedBy = "product")
+    private List<Review> reviews;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "product_order",
-            joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")})
+            joinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")})
     private Order order;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinTable(name = "product_image",
-            joinColumns = {@JoinColumn(name = "image_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")})
-    private Image image;
+    @OneToMany(mappedBy = "product")
+    private List<Image> images;
 
     @OneToMany(mappedBy = "product")
     private List<UnderCategory> underCategories;

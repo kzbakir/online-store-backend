@@ -21,7 +21,7 @@ public class UnderCategory extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(name = "product_category",
-            joinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "under_category_id", referencedColumnName = "id")})
+            joinColumns = {@JoinColumn(name = "under_category_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")})
     private Product product;
 }
