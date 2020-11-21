@@ -14,15 +14,15 @@ public class Review extends BaseEntity {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @Column(name = "product_id")
-    private Long productId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinTable(name = "product_review",
+            joinColumns = {@JoinColumn(name = "review_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")})
+    private Product product;
 
     @Column(name = "raiting")
     private Integer raiting;
 
     @Column(name = "text")
     private String reviewText;
-
-    @OneToMany(mappedBy = "review")
-    private List<Product> products;
 }

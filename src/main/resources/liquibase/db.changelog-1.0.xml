@@ -160,6 +160,10 @@
                 <constraints nullable="true" unique="false"/>
             </column>
 
+            <column name="amount" type="INT">
+                <constraints nullable="false" unique="false"/>
+            </column>
+
             <column name="created" type="TIMESTAMP" defaultValue="now()">
                 <constraints nullable="false"/>
             </column>
