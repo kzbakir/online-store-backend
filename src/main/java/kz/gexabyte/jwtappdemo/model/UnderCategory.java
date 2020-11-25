@@ -1,5 +1,7 @@
 package kz.gexabyte.jwtappdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,6 +22,7 @@ public class UnderCategory extends BaseEntity {
     private Category category;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
     @JoinTable(name = "product_category",
             joinColumns = {@JoinColumn(name = "under_category_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")})

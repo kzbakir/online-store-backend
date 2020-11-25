@@ -1,5 +1,7 @@
 package kz.gexabyte.jwtappdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,5 +19,6 @@ public class Category extends BaseEntity {
     private String nameEng;
 
     @OneToMany(mappedBy = "category")
+    @JsonIgnore
     private List<UnderCategory> underCategories;
 }

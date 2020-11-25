@@ -1,5 +1,6 @@
 package kz.gexabyte.jwtappdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,5 +23,6 @@ public class Address extends BaseEntity {
     private Integer apartmentNumber;
 
     @OneToOne(mappedBy = "address")
+    @JsonIgnore
     private User user;
 }
