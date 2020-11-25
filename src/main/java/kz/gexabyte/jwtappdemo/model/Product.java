@@ -1,5 +1,7 @@
 package kz.gexabyte.jwtappdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -68,6 +70,7 @@ public class Product extends BaseEntity {
     private List<Review> reviews;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
     @JoinTable(name = "product_order",
             joinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")})

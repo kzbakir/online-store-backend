@@ -1,5 +1,6 @@
 package kz.gexabyte.jwtappdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -17,10 +18,12 @@ public class BaseEntity {
 
     @CreatedDate
     @Column(name = "created")
+    @JsonIgnore
     private Date created;
 
     @LastModifiedDate
     @Column(name = "updated")
+    @JsonIgnore
     private Date updated;
 
     @Enumerated(EnumType.STRING)
