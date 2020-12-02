@@ -54,7 +54,6 @@ public class AuthenticationRestControllerV1 {
             }
 
             String token = jwtTokenProvider.createToken(username, user.getRoles());
-
             Map<Object, Object> response = new HashMap<>();
             response.put("username", username);
             response.put("token", token);
@@ -66,7 +65,6 @@ public class AuthenticationRestControllerV1 {
 
     @PostMapping("register")
     public ResponseEntity register(@RequestBody RegisteredUserDto registeredUserDto) {
-        try {
             User user = userService.findByUsername(registeredUserDto.getUsername());
             if (user == null) {
                 userService.register(registeredUserDto.toUser());
@@ -76,8 +74,5 @@ public class AuthenticationRestControllerV1 {
             } else {
                 return new ResponseEntity<>("Username or email already exist", HttpStatus.BAD_REQUEST);
             }
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
     }
 }
